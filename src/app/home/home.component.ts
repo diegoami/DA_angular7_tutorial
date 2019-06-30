@@ -10,18 +10,16 @@ import { DataService } from '../data.service';
 
 export class HomeComponent implements OnInit {
 
-  h1Style: boolean = false;
+  users_wrapper: Object;
 
   constructor(private data: DataService) { }
 
   ngOnInit() {
-  }
-
-  firstClick() {
-    
-    this.data.firstClick();
-    
-  
+    this.data.getUsers().subscribe(users_wrapper => {
+        this.users_wrapper = users_wrapper
+        console.log(this.users_wrapper);
+      }
+    );
   }
 
 }
